@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Read More</title>
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container text-white">
+    <div class="row mt-5">
+        <h3>{{ game.name }}</h3>
+        <div class="col-3">
+            <img src="{{ game.preview_image.url }}" alt="">
+        </div>
+        <div class="col-9">
+            <b>Chiqarilgan sana:</b>
+            <p>{{ game.premier }}</p>
+
+            <b>Janr:</b>
+            <p>{{ game.genre }}</p>
+
+            <b>Xarakteristika:</b>
+            <p>{{ game.character }}</p>
+        </div>
+    </div>
+    <br>
+    <br>
+    <b>O`yin xaqida:</b>
+    <p>{{ game.description }}</p>
+
+    <br>
+    <br>
+
+    <center>
+        <iframe width="800" height="400" src="https://www.youtube.com/embed/{{ game.triller_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </center>
+
+    {% if game_screenshots %}
+    <br>
+    <br>
+    <b>Scrinshotlar:</b>
+
+    <div class="row">
+        {% for img in game_screenshots %}
+        <div class="col-4 mb-3">
+            <img class="img-fluid" src="{{ img.image.url }}" alt="">
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="mt-5 mb-5">
+        <center>
+        <h4>Xajmi: {{ game.size }} </h4>
+        <a href="{{ game.file.url }}" dowland class="btn btn-lg btn-success
+        w-25"> Tortib olish </a>
+        </center>
+
+    </div>
+
+</div>
+{% endblock %}
